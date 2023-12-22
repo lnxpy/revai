@@ -1,0 +1,27 @@
+name: RevAI
+description: An AI Code Reviewing Tool!
+author: Sadra Yahyapour
+
+branding:
+  icon: check
+  color: blue
+
+runs:
+  using: docker
+  image: Dockerfile
+
+inputs:
+  email:
+    required: true
+    description: mindsdb email address
+  password:
+    required: true
+    description: mindsdb account password
+
+outputs:
+  message:
+    description: thoughts
+  score:
+    description: score
+  file:
+    description: file name
