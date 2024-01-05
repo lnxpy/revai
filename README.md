@@ -1,8 +1,6 @@
-# RevAI - Let AI Review it First!
+<img src="media/banner.svg">
 
 An AI code reviewing action that leaves its thoughts whenever someone opens a pull request on your repository. Let AI approve it, then just merge it!
-
-<img src="media/banner.svg">
 
 ## Setup
 You have to create a MindsDB account [here](https://cloud.mindsdb.com/login) and log into it. Then train a GPT model based on your desired prompt and share the credentials with RevAI so that it'll be able to comment on changes.
