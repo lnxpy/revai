@@ -13,7 +13,7 @@ Create an account on [here](https://openai.com/) and generate a chatGPT access t
 ### Train the model
 Navigate to your [dashboard](https://cloud.mindsdb.com/home) and create a new instance. Execute the following snippet in your instance editor.
 
-> Replace your OpenAI token with `<YOUR-TOKEN>` and select one of the following prompt statements as `<PROMPT>`.
+> Replace your OpenAI token with `<YOUR-TOKEN>`.
 
 ```sql
 CREATE MODEL mindsdb.gpt_model
@@ -22,17 +22,14 @@ USING
 engine = 'openai',
 api_key = '<YOUR-TOKEN>',
 model_name = 'gpt-3.5-turbo', -- you can also use 'text-davinci-003' or 'gpt-3.5-turbo'
-prompt_template = '<PROMPT>'; 
-```
+prompt_template = 'review the {{text}} based on clean-code principles and pep rules then rate it from 1 to 10 and put it in the "score" field. Put your thoughts about it in one sentence in the "message" field.
 
-#### Prompt #1
-```
-Some text..
-```
+Respond with no formatting, but in the following structure:
 
-#### Prompt #2
-```
-Some text..
+{
+    score: int,
+    message: str
+}'; 
 ```
 
 ## Usage

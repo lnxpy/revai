@@ -11,11 +11,15 @@ runs:
   image: Dockerfile
 
 inputs:
-  name:
-    required: false
-    description: the person/thing you want to greet
-    default: World
+  email:
+    required: true
+    description: mindsdb email address
+  password:
+    required: true
+    description: mindsdb account password
 
 outputs:
-  phrase:
-    description: output variable
+  message:
+    description: thoughts
+  score:
+    description: score

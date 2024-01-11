@@ -1,0 +1,38 @@
+name: testing action
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checking out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+
+      - name: using revai
+        id: revai
+        uses: ./
+        with:
+          email: ${{ secrets.EMAIL }}
+          password: ${{ secrets.EMAIL }}
+          files: ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.number }}
+          body: |
+            ${{ steps.revai.outputs.message }}
+            ${{ steps.revai.outputs.score }}
+
+          reactions: '+1'
